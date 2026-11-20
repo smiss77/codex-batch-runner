@@ -1,0 +1,43 @@
+{
+  "runsDir": "runs",
+  "pipeline": {
+    "identifyConcurrency": 5,
+    "reviewConcurrency": 5,
+    "timeoutSeconds": 10800,
+    "retries": 1,
+    "sandbox": "workspace-write"
+  },
+  "codex": {
+    "binary": "",
+    "model": "",
+    "reasoningEffort": "high",
+    "approvalPolicy": "never",
+    "extraArgs": []
+  },
+  "stages": {
+    "identify": {
+      "prompt": "prompts/identify.md",
+      "timeoutSeconds": 10800,
+      "retries": 1,
+      "requiredArtifacts": ["output"]
+    },
+    "review": {
+      "prompt": "prompts/review.md",
+      "timeoutSeconds": 10800,
+      "retries": 1,
+      "requiredArtifacts": ["output"]
+    }
+  },
+  "candidate": {
+    "target": "candidate",
+    "readOnly": true
+  },
+  "validation": {
+    "command": [],
+    "timeoutSeconds": 600
+  },
+  "finalStatus": {
+    "path": "output/final.json",
+    "field": "status"
+  }
+}

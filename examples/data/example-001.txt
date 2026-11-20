@@ -1,0 +1,2 @@
+This is a placeholder source file for the generic pipeline example.
+Replace it with your own task input.
